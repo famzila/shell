@@ -30,7 +30,8 @@ module.exports = {
 
       // For hosts (please adjust)
       remotes: {
-        "mfe": "http://localhost:4000/remoteEntry.js",
+        // "mfe": "http://localhost:4000/remoteEntry.js",
+        "mfe": "https://mfe1-five.vercel.app/remoteEntry.js",
 
       },
 

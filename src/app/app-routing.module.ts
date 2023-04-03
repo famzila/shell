@@ -8,7 +8,8 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
-        remoteEntry: `http://localhost:4000/remoteEntry.js`,
+        remoteEntry: `https://mfe1-five.vercel.app/remoteEntry.js`,
+        // remoteEntry: `http://localhost:4000/remoteEntry.js`,
         exposedModule: './Module',
       }).then((m) => m.RemoteEntryModule),
   },

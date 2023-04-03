@@ -1,0 +1,6 @@
+{
+  "/assets/mfe": {
+    "target": "https://mfe1-five.vercel.app",
+    "changeOrigin": true
+  }
+}

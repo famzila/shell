@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CustomTranslateLoaderService } from './custom-translate-loader.service';
+import { TranslationUpdaterService } from './translate-updater.service';
 
-describe('CustomTranslateLoaderService', () => {
-  let service: CustomTranslateLoaderService;
+describe('TranslationUpdaterService', () => {
+  let service: TranslationUpdaterService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

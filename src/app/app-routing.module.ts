@@ -3,33 +3,48 @@ import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { environment } from 'src/environments/environment';
-import { TranslationUpdaterService } from './core/services/custom-translate-loader/custom-translate-loader.service';
+import { TranslationUpdaterService } from './core/services/custom-translate-loader/translate-updater.service';
 
 const routes: Routes = [
   {
-    path: 'mfe1',
+    path: `${environment.remotes.mfe1.name}`,
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
+        // remoteEntry: `https://mfe1-five.vercel.app/remoteEntry.js`,
         remoteEntry: `${environment.remotes.mfe1.frontUrl}/remoteEntry.js`,
         exposedModule: './Module',
       }).then((m) => m.RemoteEntryModule),
-    canMatch: [() => {
-      const translateLoader = inject(TranslationUpdaterService);
-      if (!translateLoader.isMfe1Loaded) {
-        translateLoader.mergeTranslations('mfe1');
-        translateLoader.isMfe1Loaded = true;
-      }
-    }]
+    canMatch: [
+      () => {
+        inject(TranslationUpdaterService).mergeTranslations(`${environment.remotes.mfe1.name}`);
+      },
+    ],
+    canDeactivate: [
+      () => {
+        inject(TranslationUpdaterService).removeMfeTranslations(`${environment.remotes.mfe1.name}`);
+      },
+    ],
   },
   {
-    path: 'mfe2',
+    path: `${environment.remotes.mfe2.name}`,
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
+        // remoteEntry: `https://mfe1-five.vercel.app/remoteEntry.js`,
         remoteEntry: `${environment.remotes.mfe2.frontUrl}/remoteEntry.js`,
         exposedModule: './Module',
-      }).then(m => m.Module),
+      }).then((m) => m.RemoteEntryModule),
+    canMatch: [
+      () => {
+        inject(TranslationUpdaterService).mergeTranslations(`${environment.remotes.mfe2.name}`);
+      },
+    ],
+    canDeactivate: [
+      () => {
+        inject(TranslationUpdaterService).removeMfeTranslations(`${environment.remotes.mfe2.name}`);
+      },
+    ],
   },
 ];
 
@@ -37,4 +52,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

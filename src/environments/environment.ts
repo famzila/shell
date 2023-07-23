@@ -9,10 +9,12 @@ export const environment = {
 
   remotes: {
     mfe1: {
+      name: 'mfe1',
       // @ts-expect-error: TS7015: Element implicitly has an 'any' type because index expression is not of type 'number'.
       frontUrl: window['env']['mfe1'] || 'variable-not-configured',
     },
     mfe2: {
+      name: 'mfe2',
       // @ts-expect-error: TS7015: Element implicitly has an 'any' type because index expression is not of type 'number'.
       frontUrl: window['env']['mfe2'] || 'variable-not-configured',
     },

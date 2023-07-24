@@ -23,6 +23,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
+      extend: true,
     }),
   ],
   providers: [],

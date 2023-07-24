@@ -20,11 +20,6 @@ const routes: Routes = [
         inject(TranslationUpdaterService).mergeTranslations(`${environment.remotes.mfe1.name}`);
       },
     ],
-    canDeactivate: [
-      () => {
-        inject(TranslationUpdaterService).removeMfeTranslations(`${environment.remotes.mfe1.name}`);
-      },
-    ],
   },
   {
     path: `${environment.remotes.mfe2.name}`,
@@ -40,11 +35,6 @@ const routes: Routes = [
         inject(TranslationUpdaterService).mergeTranslations(`${environment.remotes.mfe2.name}`);
       },
     ],
-    canDeactivate: [
-      () => {
-        inject(TranslationUpdaterService).removeMfeTranslations(`${environment.remotes.mfe2.name}`);
-      },
-    ],
   },
 ];
 
@@ -52,4 +42,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

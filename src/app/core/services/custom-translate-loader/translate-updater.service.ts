@@ -7,19 +7,20 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root',
 })
 export class TranslationUpdaterService {
-  loadedMfes: Record<string, boolean> = {};
+  loadedMfe: Record<string, boolean> = {};
+  // TODO: translate setTranslation(...) is not merging the translations, find why and remove this
+  mergedTranslations!: Object;
 
-  constructor(private http: HttpClient, private translate: TranslateService) {}
+  constructor(private http: HttpClient, private translate: TranslateService) { }
 
   /**
    * Merge translation of both shell and loaded mfe
    * @param remoteName the mfe assets directory name (e.g. assets/remoteName/i18n/...)
    */
   mergeTranslations(remoteName: string) {
-    if (!this.loadedMfes[remoteName]) {
-      // Get current translation and mfe translation observables
+    if (!this.loadedMfe[remoteName]) {
+      // Get current translation and mfe translation for current language
       const currentLang = this.translate.currentLang;
-      console.log(`assets/${remoteName}/i18n/${currentLang}.json`);
       const mfeTranslation$ = this.http.get(
         `assets/${remoteName}/i18n/${currentLang}.json`
       );
@@ -28,31 +29,34 @@ export class TranslationUpdaterService {
       // Merge both current and mfe translations
       forkJoin([mfeTranslation$, currentTranslations$]).subscribe(
         ([mfeTranslation, currentTranslation]) => {
-          const mergedTranslations = {
-            ...mfeTranslation ,
+
+          this.mergedTranslations = {
             ...currentTranslation,
+            ...this.mergedTranslations,
+            ...mfeTranslation,
           };
-          // console dir
-          console.log("Loading MFE: ", remoteName, " - ", JSON.stringify(mergedTranslations, null, 2));
-          this.translate.setTranslation(currentLang, mergedTranslations, false);
+
+          this.translate.setTranslation(currentLang, this.mergedTranslations, true);
+          this.translate.use(currentLang);
+
           // set the mfe as loaded to avoid reloading it
-          this.loadedMfes[remoteName] = true;
+          this.loadedMfe[remoteName] = true;
         }
       );
     }
   }
 
   // Remove desactivated mfe translation 
-  removeMfeTranslations(remoteName: string) {
-    // set record remoteName to false
-    this.loadedMfes[remoteName] = false;
-    // remove remoteName from translations
-    const currentLang = this.translate.currentLang;
-    const currentTranslations$ = this.translate.getTranslation(currentLang);
-    currentTranslations$.subscribe((currentTranslation) => {
-      delete currentTranslation[remoteName];
-      this.translate.setTranslation(currentLang, currentTranslation, false);
-      console.log("Removing MFE: ", remoteName, " - ", JSON.stringify(currentTranslation, null, 2));
-    });
-  }
+  // removeMfeTranslations(remoteName: string) {
+  //   // set record remoteName to false
+  //   this.loadedMfes[remoteName] = false;
+  //   // remove remoteName from translations
+  //   const currentLang = this.translate.currentLang;
+  //   const currentTranslations$ = this.translate.getTranslation(currentLang);
+  //   currentTranslations$.subscribe((currentTranslation) => {
+  //     delete currentTranslation[remoteName];
+  //     this.translate.setTranslation(currentLang, currentTranslation, false);
+  //     console.log("Removing MFE: ", remoteName, " - ", JSON.stringify(currentTranslation, null, 2));
+  //   });
+  // }
 }

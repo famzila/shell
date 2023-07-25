@@ -4,7 +4,7 @@
     "changeOrigin": true
   },
   "/assets/mfe2": {
-    "target": "https://mfe1-famzila.vercel.app/",
+    "target": "https://mfe2-famzila.vercel.app/",
     "changeOrigin": true
   }
 }

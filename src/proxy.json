@@ -1,10 +1,10 @@
 {
   "/assets/mfe1": {
-    "target": "http://localhost:4001/",
+    "target": "https://mfe1-famzila.vercel.app/",
     "changeOrigin": true
   },
   "/assets/mfe2": {
-    "target": "http://localhost:4002/",
+    "target": "https://mfe2-famzila.vercel.app/",
     "changeOrigin": true
   }
 }

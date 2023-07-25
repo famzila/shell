@@ -5,11 +5,11 @@ export const environment = {
     remotes: {
         mfe1: {
             name: 'mfe1',
-            frontUrl: "https://mfe1-five.vercel.app",
+            frontUrl: "https://mfe1-famzila.vercel.app",
         },
         mfe2: {
             name: 'mfe2',
-            frontUrl: "https://mfe2.vercel.app/",
+            frontUrl: "https://mfe2-famzila.vercel.app",
         },
     },
 };

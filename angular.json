@@ -67,6 +67,7 @@
           "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
+              "proxyConfig": "src/proxy.prod.json",
               "browserTargent": "shell:build:production",
               "extraWebpackConfig": "webpack.prod.config.js"
             },

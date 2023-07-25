@@ -1,0 +1,10 @@
+{
+  "/assets/mfe1": {
+    "target": "https://mfe1-famzila.vercel.app/",
+    "changeOrigin": true
+  },
+  "/assets/mfe2": {
+    "target": "https://mfe1-famzila.vercel.app/",
+    "changeOrigin": true
+  }
+}

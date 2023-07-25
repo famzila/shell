@@ -47,10 +47,6 @@
 								{
 									"replace": "src/environments/environment.ts",
 									"with": "src/environments/environment.prod.ts"
-								},
-								{
-									"replace": "src/proxy.json",
-									"with": "src/proxy.prod.json"
 								}
 							],
               "outputHashing": "all",
@@ -71,6 +67,7 @@
           "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
+              "proxyConfig": "src/proxy.prod.json",
               "browserTargent": "shell:build:production",
               "extraWebpackConfig": "webpack.prod.config.js"
             },

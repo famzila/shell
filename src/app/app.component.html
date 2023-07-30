@@ -1,10 +1,23 @@
 <h1>{{ "SHELL" | translate }}</h1>
 <ul>
-    <li>
-        <a routerLink="mfe1">MFE 1</a>
-    </li>
-    <li>
-        <a routerLink="mfe2">MFE 2</a>
-    </li>
+  <li>
+    <a [routerLink]="[{ outlets: { mfe1: 'mfe1' } }]"> Go to MFE 1 </a>
+  </li>
+  <li>
+    <a
+      [routerLink]="[{ outlets: { mfe2: 'mfe2' } }]"
+      [queryParams]="{ isOpen: true }"
+    >
+      Go to MFE 2
+    </a>
+  </li>
 </ul>
-<router-outlet></router-outlet>
+<modal class="modal" ngClass="'open': isOpen" [class.open]="isOpen">
+  <div class="modal-content">
+    <button type="button" class="close" aria-label="Close" (click)="onClose()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <router-outlet name="mfe2"></router-outlet>
+  </div>
+</modal>
+<router-outlet name="mfe1"></router-outlet>

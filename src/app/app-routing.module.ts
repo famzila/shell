@@ -1,19 +1,22 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { NgModule, inject } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {
+  RouterModule,
+  Routes,
+} from '@angular/router';
 
 import { environment } from 'src/environments/environment';
 import { TranslationUpdaterService } from './core/services/custom-translate-loader/translate-updater.service';
-import { AppComponent } from './app.component';
+import { AuthGuard } from './authentication/services/auth/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    
+    canActivate: [AuthGuard],
     children: [
       {
         path: `${environment.remotes.mfe1.name}`,
-        outlet:"mfe1",
+        outlet: 'mfe1',
         loadChildren: () =>
           loadRemoteModule({
             type: 'module',
@@ -50,8 +53,8 @@ const routes: Routes = [
             );
           },
         ],
-      }
-    ]
+      },
+    ],
   },
 ];
 

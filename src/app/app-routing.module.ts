@@ -42,7 +42,6 @@ const routes: Routes = [
         loadChildren: () =>
           loadRemoteModule({
             type: 'module',
-            // remoteEntry: `https://mfe2.vercel.app/remoteEntry.js`,
             remoteEntry: `${environment.remotes.mfe2.frontUrl}/remoteEntry.js`,
             exposedModule: './Module',
           }).then((m) => m.RemoteEntryModule),

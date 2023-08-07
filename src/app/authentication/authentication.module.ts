@@ -22,13 +22,13 @@ function initializeKeycloak(keycloak: KeycloakService) {
 
 @NgModule({
   declarations: [],
-  providers:[
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService]
-    },
+  providers: [
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: initializeKeycloak,
+    //   multi: true,
+    //   deps: [KeycloakService]
+    // },
   ],
   imports: [
     CommonModule,

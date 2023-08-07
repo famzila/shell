@@ -41,10 +41,41 @@ export class TranslationUpdaterService {
 
           // set the mfe as loaded to avoid reloading it
           this.loadedMfe[remoteName] = true;
+          return true;
         }
       );
-    }
+    } 
+    return false;
   }
+
+  /**
+   * 
+   
+  next: (mfeTranslation, currentTranslation) => {
+          
+            this.mergedTranslations = {
+              ...currentTranslation,
+              ...this.mergedTranslations,
+              ...mfeTranslation,
+            };
+
+            this.translate.setTranslation(
+              currentLang,
+              this.mergedTranslations,
+              true
+            );
+            this.translate.use(currentLang);
+
+            // set the mfe as loaded to avoid reloading it
+            this.loadedMfe[remoteName] = true;
+        },
+        error: () => {
+          console.log('Error while mergine translations');
+        },
+        complete: () => {
+          return true;
+        }
+   */
 
   // Remove desactivated mfe translation 
   // removeMfeTranslations(remoteName: string) {

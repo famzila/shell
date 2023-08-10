@@ -6,7 +6,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthenticationModule } from './authentication/authentication.module';
+import { CoreModule } from './core/core.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -27,7 +27,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
       extend: true,
     }),
-    AuthenticationModule
+    CoreModule
   ],
   providers: [
   ],

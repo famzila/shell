@@ -1,11 +1,11 @@
 {
   "/assets/mfe1": {
-    "target": "https://mfe1-famzila.vercel.app",
+    "target": "http://localhost:4001",
     "secure": false,
     "logLevel": "debug"
   },
   "/assets/mfe2": {
-    "target": "https://mfe2-famzila.vercel.app",
+    "target": "http://localhost:4002",
     "secure": false,
     "logLevel": "debug"
   }

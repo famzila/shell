@@ -7,7 +7,7 @@
     },
     {
       "source": "/assets/mfe2/:match*",
-      "destination": "https://mfe2-famzila.vercel.app/assets/mfe1/:match*",
+      "destination": "https://mfe2-famzila.vercel.app/assets/mfe2/:match*",
       "permanent": true 
     }
   ]

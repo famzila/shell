@@ -7,7 +7,7 @@ import {
 
 import { environment } from 'src/environments/environment';
 import { TranslationUpdaterService } from './core/services/custom-translate-loader/translate-updater.service';
-import { AuthGuard } from './authentication/services/auth/auth.guard';
+import { AuthGuard } from './core/authentication/services/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -61,4 +61,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

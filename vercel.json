@@ -2,12 +2,12 @@
   "redirects": [
     {
       "source": "/assets/mfe1/:match*",
-      "destination": "https://mfe1-famzila.vercel.app/:match*",
+      "destination": "https://mfe1-famzila.vercel.app/assets/mfe1/:match*",
       "permanent": true 
     },
     {
       "source": "/assets/mfe2/:match*",
-      "destination": "https://mfe2-famzila.vercel.app/:match*",
+      "destination": "https://mfe2-famzila.vercel.app/assets/mfe1/:match*",
       "permanent": true 
     }
   ]
